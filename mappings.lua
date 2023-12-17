@@ -8,15 +8,21 @@ return {
   n = {
     -- second key is the lefthand side of the map
 
-    -- navigate buffer tabs with `H` and `L`
-    -- L = {
-    --   function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
-    --   desc = "Next buffer",
-    -- },
-    -- H = {
-    --   function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
-    --   desc = "Previous buffer",
-    -- },
+    -- navigate line with `H` and `L`
+    L = {
+      "$",
+      desc = "Go to line beginning",
+    },
+
+    H = {
+      "_",
+      desc = "Go to line end",
+    },
+
+    ["<C-a>"] = {
+      "ggVG",
+      desc = "Select all"
+    },
 
     -- mappings seen under group name "Buffer"
     ["<leader>bD"] = {
@@ -27,6 +33,17 @@ return {
       end,
       desc = "Pick to close",
     },
+
+    ["<CR>"] = {
+      "i<CR><esc>",
+      desc = "Enter"
+    },
+
+    ["<S-Enter>"] = {
+      "A<CR><esc>",
+      desc = "Enter on line end"
+    },
+    
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
